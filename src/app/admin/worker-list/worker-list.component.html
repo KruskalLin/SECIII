@@ -1,0 +1,57 @@
+<!--<div class="container">-->
+  <!--<div class="row">-->
+    <!--<div style="position:relative; margin-bottom: 20px;">-->
+    <!--<div class="dropdown" ngbDropdown>-->
+      <!--<button class="btn btn-primary" type="button" ngbDropdownToggle>-->
+        <!--过滤-->
+      <!--</button>-->
+      <!--<ul class="dropdown-menu" ngbDropdownMenu>-->
+
+      <!--</ul>-->
+    <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<div class="container-fluid">
+  <div class="row-fluid">
+    <nb-card style="padding: 15px">
+      <h5>工人列表</h5>
+      <ngx-datatable
+        #taskTable
+        class='nbTable'
+        [columnMode]="'force'"
+        [loadingIndicator]="true"
+        [headerHeight]="50"
+        [footerHeight]="70"
+        [rowHeight]="50"
+        [rows]='rows'
+        [externalPaging]="true"
+        [count]="page.totalElements"
+        [offset]="page.pageNumber"
+        [limit]="page.size"
+        (page)='setPage($event)'>
+        <ngx-datatable-column name="工人名字" width="150">
+          <ng-template let-value1="row.username" let-value2="row.avatar" ngx-datatable-cell-template>
+            <div style="margin-bottom: 8px">
+            <nb-user [name]="value1" [picture]="value2"></nb-user>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="工人积分" width="150">
+          <ng-template let-value="row.point" ngx-datatable-cell-template>
+            <div>{{value}}</div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="工人等级" width="150">
+          <ng-template let-value="row.level" ngx-datatable-cell-template>
+            <div>{{value}}</div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="工人完成任务数" width="150">
+          <ng-template let-value="row.taskList.length" ngx-datatable-cell-template>
+            <div>{{value}}</div>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </nb-card>
+  </div>

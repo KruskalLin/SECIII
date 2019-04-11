@@ -1,0 +1,24 @@
+// @nebular theming framework
+@import '~@nebular/theme/styles/theming';
+// @nebular out of the box themes
+@import '~@nebular/theme/styles/themes';
+
+// which themes you what to enable (empty to enable all)
+$nb-enabled-themes: (default);
+
+$nb-themes: nb-register-theme((
+ // app wise variables for each theme
+  sidebar-header-gap: 2rem,
+  sidebar-header-height: initial,
+  layout-content-width: 1400px,
+  top-header: #000000,
+  top-header-height: 2.3rem,
+  checkbox-checked-checkmark: #ffffff,
+  top-header-font-color: #ffffff,
+  user-font-size: 0.9rem,
+  log-bg: url('assets/images/login-bg.jpg'),
+  header-height: 4.0rem,
+  bottom-header-height: 4.5rem,
+  font-size: 0.8rem,
+  font-main: Tahoma
+), default, default);

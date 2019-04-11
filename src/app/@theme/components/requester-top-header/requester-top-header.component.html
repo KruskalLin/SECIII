@@ -1,0 +1,23 @@
+<div class="header-container"
+     [class.left]="position === 'normal'"
+     [class.right]="position === 'inverse'">
+  <div class="log_div" *ngIf="!hasSignIn()">
+    <a (click)="goToWorker()" class="navigation">您正在找一些简单的工作？</a>
+  </div>
+</div>
+
+<div
+  class="header-container"
+  [class.right]="position === 'normal'"
+  [class.left]="position === 'inverse'">
+  <div *ngIf="hasSignIn()">
+    <nb-action>
+      <nb-user id="user" [size]="small" [nbContextMenu]="userMenu" nbContextMenuTag="requester-context-menu" [name]="user?.username" [picture]="user?.picture"></nb-user>
+    </nb-action>
+  </div>
+  <div *ngIf="!hasSignIn()" class="log_div">
+    <a (click)="goToLogin()" class="log">登入</a>
+    或者
+    <a (click)="goToRegister()" class="log">注册</a>
+  </div>
+</div>

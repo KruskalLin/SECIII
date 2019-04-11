@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-8">
+    <nb-card style="padding: 20px;">
+      <nb-card-header>图片内容</nb-card-header>
+      <nb-card-body>
+    <div class="grid" *ngIf="items.length > 0">
+      <div class="grid-item" *ngFor="let item of items; let i = index" (click)="lightbox.open(i)">
+        <img class="img" [src]="item.data.thumbnail">
+      </div>
+    </div>
+      </nb-card-body>
+    </nb-card>
+
+  </div>
+  <div class="col-4">
+    <nb-card style="padding: 15px;">
+      <div style="text-align: center;margin-top: 10px;">
+        <div style="float: left;">
+          <span style="font-weight: bold">任务名称</span>
+        </div>
+        <div style="float: right;">
+          <a >{{task?.taskName}}</a>
+        </div>
+      </div>
+      <div style="text-align: center;margin-top: 20px;">
+        <div style="float: left;">
+          <span style="font-weight: bold">任务类型</span>
+        </div>
+        <div style="float: right">
+          <a >{{task?.tasksType}}</a>
+        </div>
+      </div>
+      <div style="text-align: center;margin-top: 20px;">
+        <div style="float: left;">
+          <span style="font-weight: bold">标签</span>
+        </div>
+        <div style="float: right">
+          <a class="badge badge-info" style="color: white;padding-left: 8px;padding-right: 8px;">{{task?.category}}</a>
+          <a class="badge badge-danger" style="color: white;padding-left: 8px;padding-right: 8px;">{{task?.label[0]}}</a>
+        </div>
+      </div>
+
+      <div style="text-align: center;margin-top: 20px;">
+        <div style="float: left;">
+          <span style="font-weight: bold">限制等级</span>
+        </div>
+        <div style="float: right">
+          <a>level <span style="font-weight: bold;color: red;">{{task?.level}}</span></a>
+        </div>
+      </div >
+        <div style="text-align: center;margin-top: 20px;">
+          <div style="float: left;">
+            <span style="font-weight: bold">截止日期</span>
+          </div>
+          <div style="float: right">
+            <a><span style="font-weight: bold;color: red;">{{task?.endDate}}</span></a>
+          </div>
+        </div >
+      <div style="text-align: center;margin-top: 20px;">
+        <div style="float: left;">
+          <span style="font-weight: bold">积分</span>
+        </div>
+        <div style="float: right">
+          <a><span style="font-weight: bold;color: #2ecc71;">{{task?.points}}</span></a>
+        </div>
+      </div >
+      <br/>
+      <div *ngIf="task !== undefined && task.state !== 'Closed'" class="row">
+      <button *ngIf="task.state === 'Pending'" type="button" class="btn btn-success btn-sm option-btn" (click)="approve()">通过</button>
+      <button *ngIf="task.state !== 'Pending'" type="button" class="btn btn-warning btn-sm option-btn" (click)="reject()">拒绝</button>
+      <button type="button" class="btn btn-danger btn-sm option-btn" (click)="close()">关闭</button>
+      </div>
+    </nb-card>
+  </div>
+</div>
+
+<!--<nb-card class="well author-well">-->
+  <!--<address>-->
+    <!--<strong>任务名:</strong> {{task?.taskName}}-->
+    <!--<br>任务数: {{task?.dataNumbers}}-->
+    <!--<br>截止日期:  {{task?.endDate}}-->
+    <!--<br>-->
+  <!--</address>-->
+  <!--<address>-->
+    <!--<strong>任务类型: </strong> {{task?.tasksType}}-->
+    <!--<br>-->
+    <!--<br>-->
+    <!--<strong>分数: </strong>  {{task?.points}}-->
+    <!--<br>-->
+  <!--</address>-->
+    <!--<br/>-->
+    <!--<br/>-->
+  <!--<div *ngIf="task !== undefined && task.state !== 'Closed'" class="row">-->
+    <!--<button *ngIf="task.state === 'Pending'" type="button" class="btn btn-success btn-sm option-btn" (click)="approve()">通过</button>-->
+    <!--<button *ngIf="task.state !== 'Pending'" type="button" class="btn btn-danger btn-sm option-btn" (click)="reject()">拒绝</button>-->
+    <!--<button type="button" class="btn btn-info btn-sm option-btn" (click)="close()">关闭</button>-->
+  <!--</div>-->
+<!--</nb-card>-->

@@ -1,0 +1,23 @@
+<div class="header-container"
+     [class.left]="position === 'normal'"
+     [class.right]="position === 'inverse'">
+
+<div class="header">
+  <input type="checkbox" id="toggle" />
+  <div>
+    <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick></label>
+    <ul class="menu tab">
+      <li><a [routerLink]="['/requester/workboard/profile']" >个人信息</a></li>
+      <li><a [routerLink]="['/requester/workboard/create']">创建任务</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+<div
+  class="header-container"
+  [class.right]="position === 'normal'"
+  [class.left]="position === 'inverse'">
+  <nb-action>
+    <nb-user [nbContextMenu]="userMenu" [name]="user?.username" nbContextMenuTag="requester-context-menu" [picture]="user?.picture"></nb-user>
+  </nb-action>
+</div>

@@ -1,0 +1,24 @@
+<div class="header-container"
+     [class.left]="position === 'normal'"
+     [class.right]="position === 'inverse'">
+  <div class="log_div" *ngIf="!hasSignIn()">
+    <a (click)="goToRequester()" class="navigation">您有数据标注的需求？</a>
+  </div>
+</div>
+
+<div
+  class="header-container"
+  [class.right]="position === 'normal'"
+  [class.left]="position === 'inverse'">
+  <div *ngIf="hasSignIn()">
+    <nb-action>
+      <nb-user id="user" [size]="small" [nbContextMenu]="userMenu" nbContextMenuTag="user-context-menu" [name]="user?.username" [picture]="user?.picture"></nb-user>
+    </nb-action>
+
+  </div>
+  <div *ngIf="!hasSignIn()" class="log_div">
+    <a (click)="goToLogin()" class="menu log">登入</a>
+    或者
+    <a (click)="goToRegister()" class="menu log">注册</a>
+  </div>
+</div>

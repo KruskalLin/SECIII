@@ -1,0 +1,11 @@
+<nb-layout>
+  <nb-layout-header>
+    <ngx-common-header [position]="'normal'"></ngx-common-header>
+  </nb-layout-header>
+  <nb-layout-column id="main-content">
+    <ng-content select="router-outlet"></ng-content>
+  </nb-layout-column>
+  <nb-layout-footer>
+    <ngx-footer></ngx-footer>
+  </nb-layout-footer>
+</nb-layout>

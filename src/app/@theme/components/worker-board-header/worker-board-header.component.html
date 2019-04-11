@@ -1,0 +1,45 @@
+<div class="header-container"
+     [class.left]="position === 'normal'"
+     [class.right]="position === 'inverse'">
+    <button (click)="goToTaskList()" class="btn btn-hero-success btn-demo">工作区</button>
+
+  <div class="header">
+    <input type="checkbox" id="toggle" />
+    <div>
+      <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick></label>
+      <ul class="menu tab">
+        <li><a [routerLink]="['/worker/workboard/profile']" >个人信息</a></li>
+        <li><a [routerLink]="['/worker/workboard/tasklist', {search: '', page: 0}]">工作列表</a></li>
+        <li><a [routerLink]="['/worker/workboard/market']">商城</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div
+  class="header-container"
+  [class.right]="position === 'normal'"
+  [class.left]="position === 'inverse'">
+
+
+  <nb-action>
+          <nb-user [nbContextMenu]="userMenu" style="cursor:pointer;" nbContextMenuTag="user-context-menu"  [name]="user?.username" [picture]="user?.picture"></nb-user>
+  </nb-action>
+
+  <nb-action size="medium" class="control-item" (click)="goToMessage()" icon="nb-email" ></nb-action>
+  <nb-action size="medium" class="control-item" (click)="mission()" icon="nb-star"></nb-action>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 column">
+      <div class="search-container">
+        <input (keydown)="onKeyDown($event, p.value)" id="search" name="search_input" type="text" placeholder='搜索任务' #p/>
+      </div>
+    </div>
+    <nb-action size="medium" class="control-item" icon="nb-search" style="margin-left: 85px;"></nb-action>
+
+  </div>
+
+
+
+
+</div>

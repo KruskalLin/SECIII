@@ -1,0 +1,37 @@
+<div class="header-container"
+     [class.left]="position === 'normal'"
+     [class.right]="position === 'inverse'">
+  <div class="logo-container">
+    <div class="logo"><span>工人</span>平台</div>
+  </div>
+</div>
+<div class="menu container">
+  <div class="header">
+    <input type="checkbox" id="toggle" />
+    <div>
+      <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick></label>
+      <ul class="menu tab">
+        <li><a routerLink="/worker" >主页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!--<div class="row tab">-->
+    <!--<a routerLink="/worker" id="first-tab" class="tab-info toggle-btn top-tab">主页</a>-->
+  <!--</div>-->
+</div>
+<div
+  class="header-container"
+  [class.right]="position === 'normal'"
+  [class.left]="position === 'inverse'">
+  <div *ngIf="hasSignIn()">
+    <button (click)="goToWorkBoard()" class="btn btn-hero-success btn-demo">工作区</button>
+  </div>
+  <div *ngIf="!hasSignIn()">
+    <button type="button" class="btn btn-hero-success btn-sm" routerLink="/worker/login" style="padding: 5px 18px 5px 18px;border-radius: 20px;margin-right: 12px;">
+      <i class="fa fa-sign-in"></i>
+      登入</button>
+    <button id="register" type="button" class="btn btn-hero-success btn-sm" routerLink="/worker/register" style="padding: 5px 18px 5px 18px;border-radius: 20px;">注册</button>
+
+  </div>
+</div>

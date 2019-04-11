@@ -1,0 +1,78 @@
+<nb-card style="padding: 20px">
+<ngx-datatable
+  #taskTable
+  class='nbTable'
+  [columnMode]="'force'"
+  [loadingIndicator]="true"
+  [headerHeight]="50"
+  [footerHeight]="70"
+  [rowHeight]="50"
+  [rows]='rows | async'
+  [limit]="10"
+>
+  <ngx-datatable-row-detail [rowHeight]="100" #detailRow (toggle)="onDetailToggle($event)">
+    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+      <div style="padding-left:35px;">
+        <div><strong>详细信息</strong></div>
+        <div>构建时间: {{row.buildDate}}</div>
+        <div>任务: {{row.dataNumbers}}</div>
+      </div>
+    </ng-template>
+  </ngx-datatable-row-detail>
+  <ngx-datatable-column
+    [width]="50"
+    [resizeable]="false"
+    [sortable]="false"
+    [draggable]="false"
+    [canAutoResize]="false">
+    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+      <a
+        href="javascript:void(0)"
+        [class.datatable-icon-right]="!expanded"
+        [class.datatable-icon-down]="expanded"
+        title="Expand/Collapse Row"
+        (click)="toggleExpandRow(row)">
+      </a>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column  name="序号" width="40">
+    <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+      <strong>{{rowIndex}}</strong>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="任务名" width="200">
+    <ng-template let-value="row.taskName" ngx-datatable-cell-template>
+      <strong>{{value}}</strong>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="任务类型" width="200">
+    <ng-template let-value="row.tasksType" ngx-datatable-cell-template>
+      <div [ngSwitch]="value">
+        <button class="custom-btn custom-btn-info" *ngSwitchCase="'ImagePartTags'" disabled>方框标注</button>
+        <button  class="custom-btn custom-btn-success" *ngSwitchCase="'ImageEntiretyTags'" disabled>整体标注</button>
+        <button  class="custom-btn custom-btn-warning" *ngSwitchCase="'ImageRegionalizationTags'" disabled>区域标注</button>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="截止日期" width="200">
+    <ng-template let-value="row.endDate" let-value="value" ngx-datatable-cell-template>
+      <div>{{value}}</div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="状态" width="150">
+    <ng-template let-value="row.state" ngx-datatable-cell-template>
+      <div [ngSwitch]="value">
+        <span  *ngSwitchCase="'PENDING'" style="color: #007eff"><fa name="circle"></fa>正在审核</span>
+        <span  *ngSwitchCase="'CLOSED'" style="color: red;"><fa name="circle"></fa>已关闭</span>
+        <span  *ngSwitchCase="'FINISHED'" style="color: mediumpurple;"><fa name="circle"></fa>已结束</span>
+        <span  *ngSwitchCase="'EXECUTING'" style="color: #2ecc71;"><fa name="circle"></fa>正在执行</span>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="操作" width="200">
+    <ng-template let-rowIndex="rowIndex"  ngx-datatable-cell-template>
+      <button (click)="viewDetail(rowIndex)" class="btn btn-info btn-sm" type="button" style="padding-left: 8px;padding-right: 8px;padding-top: 5px;padding-bottom: 5px">查看</button>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>
+</nb-card>

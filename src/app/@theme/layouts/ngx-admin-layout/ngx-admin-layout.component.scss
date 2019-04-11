@@ -1,0 +1,19 @@
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/bootstrap/breakpoints';
+@import '../../styles/themes';
+
+@include nb-install-component() {
+
+  .top-header {
+    height: nb-theme(top-header-height);
+
+  }
+  .top-header ngx-requester-top-header {
+    position: relative;
+    background-color: nb-theme(top-header);
+    padding-left: 15px;
+    padding-right: 15px;
+
+  }
+
+}

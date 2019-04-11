@@ -1,0 +1,13 @@
+<nb-layout>
+  <nb-layout-header class="worker-header"  fixed>
+    <ngx-requester-bottom-header [position]="'normal'"></ngx-requester-bottom-header>
+  </nb-layout-header>
+  <nb-layout-column id="main-content">
+    <ng-content select="router-outlet"></ng-content>
+  </nb-layout-column>
+
+
+  <nb-layout-footer >
+    <ngx-footer></ngx-footer>
+  </nb-layout-footer>
+</nb-layout>

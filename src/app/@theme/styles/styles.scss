@@ -1,0 +1,24 @@
+// themes - our custom or/and out of the box themes
+@import 'themes';
+@import '~css-star-rating/scss/star-rating';
+@import '~@ngx-gallery/core/styles/gallery';
+@import '~@ngx-gallery/core/styles/lightbox';
+// framework component themes (styles tied to theme variables)
+@import '~@nebular/theme/styles/globals';
+// loading progress bar theme
+@import './pace.theme';
+@import '../../../assets/css/navigataur.css';
+@import '~angular2-toaster/src/toaster';
+@import '~hover.css';
+// install the framework and custom global styles
+@include nb-install() {
+
+  // framework global styles
+  @include nb-theme-global();
+  // loading progress bar
+  @include ngx-pace-theme();
+
+  .custom-control .custom-control-indicator {
+    border-radius: 50%; // TODO: quickfix for https://github.com/akveo/nebular/issues/275
+  }
+};

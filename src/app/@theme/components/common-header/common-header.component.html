@@ -1,0 +1,41 @@
+<div class="header-container"
+     [class.left]="position === 'normal'"
+     [class.right]="position === 'inverse'">
+  <!--<div class="menu container">-->
+    <!--<div class="row tab">-->
+      <!--<a routerLink="/admin/dashboard" id="first-tab" class="tab-info toggle-btn">主面板</a>-->
+      <!--<a routerLink="/admin/workers" class="tab-info toggle-btn">工人列表</a>-->
+      <!--<a routerLink="/admin/requesters" class="tab-info toggle-btn">发布者列表</a>-->
+      <!--&lt;!&ndash;<a routerLink="/admin/log" class="tab-info toggle-btn">日志</a>&ndash;&gt;-->
+      <!--<a routerLink="/admin/tasklist" class="tab-info toggle-btn">任务列表</a>-->
+
+    <!--</div>-->
+  <!--</div>-->
+  <div class="header">
+    <input type="checkbox" id="toggle" />
+    <div>
+      <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick></label>
+      <ul class="menu tab">
+        <li><a routerLink="/admin/dashboard">主面板</a></li>
+        <!--<li><a routerLink="/admin/workers">工人列表</a></li>-->
+        <!--<li><a routerLink="/admin/requesters">发布者列表</a></li>-->
+        <li><a routerLink="/admin/tasklist">任务列表</a></li>
+
+
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div
+  class="header-container"
+  [class.right]="position === 'normal'"
+  [class.left]="position === 'inverse'">
+  <div *ngIf="hasSignIn()">
+    <nb-action>
+      <nb-user id="user" [size]="small" [nbContextMenu]="userMenu" nbContextMenuTag="user-context-menu" [name]="user?.username" [picture]="user?.picture"></nb-user>
+    </nb-action>
+
+  </div>
+</div>

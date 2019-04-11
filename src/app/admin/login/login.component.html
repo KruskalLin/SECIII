@@ -1,0 +1,70 @@
+<nb-layout>
+  <nb-layout-column  class="main-container" >
+    <div class="login-body">
+      <div class="container">
+
+        <form class="form-signin" (ngSubmit)="f.form.valid && login()" #f="ngForm">
+          <div class="form-signin-heading text-center">
+            <h1 class="sign-title">登入</h1>
+            <div class="logo-container">
+              <div class="logo">NGX-<span class="sub-logo">IMGTAG</span></div>
+            </div>
+            <div class="subtitle">
+              管理员平台
+            </div>
+          </div>
+          <div class="login-wrap">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+              <input type="text"
+                     class="form-control"
+                     id="username"
+                     placeholder="用户名"
+                     name="username"
+                     [(ngModel)]="user.username"
+                     #username="ngModel"
+                     required
+                     autofocus
+              />
+              <div *ngIf="f.submitted && !username.valid" class="help-block">请输入用户名</div>
+            </div>
+            <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+              <input type="password"
+                     class="form-control"
+                     id="password"
+                     placeholder="密码"
+                     name="password"
+                     [(ngModel)]="user.password"
+                     #password="ngModel"
+                     required>
+              <div *ngIf="f.submitted && !password.valid" class="help-block">请输入密码</div>
+            </div>
+            <div class="form-group">
+              <nb-checkbox>记住我</nb-checkbox>
+            </div>
+            <button class="btn btn-lg btn-login btn-block" type="submit">
+              <fa name="check" size="lg"></fa>
+            </button>
+            <div  [ngSwitch]="status">
+              <div *ngSwitchCase="'404'" class="help-block">未找到该用户</div>
+              <div *ngSwitchCase="'400'" class="help-block">请求发生错误</div>
+              <div *ngSwitchCase="'500'" class="help-block">服务器发生错误</div>
+              <div *ngSwitchCase="'403'" class="help-block">权限不足</div>
+              <div *ngSwitchCase="'401'" class="help-block">密码错误</div>
+            </div>
+
+            <label class="checkbox">
+            <span class="pull-right">
+                    <a> 忘记密码？</a>
+                </span>
+            </label>
+
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+
+  </nb-layout-column>
+</nb-layout>

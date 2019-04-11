@@ -1,0 +1,89 @@
+<nb-layout>
+  <nb-layout-column  class="main-container"  style="padding: 0;">
+
+    <div class="wrapper">
+      <div class="container">
+        <h1 style="color: white;">工人平台注册</h1>
+        <form class="form" (ngSubmit)="f.form.valid && checkPassword() && register()" #f="ngForm">
+          <div class="login-wrap">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+              <input type="text"
+                     class="form-control"
+                     id="username"
+                     placeholder="用户名"
+                     name="username"
+                     [(ngModel)]="registerEntity.username"
+                     #username="ngModel"
+                     required
+                     autofocus
+              />
+              <div *ngIf="f.submitted && !username.valid" class="help-block">请输入用户名</div>
+            </div>
+            <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+              <input type="password"
+                     class="form-control"
+                     id="password"
+                     placeholder="密码"
+                     name="password"
+                     [(ngModel)]="registerEntity.password"
+                     #password="ngModel"
+                     required>
+              <div *ngIf="f.submitted && !password.valid" class="help-block">请输入密码</div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': !confirmPassword.valid || checkPassword() }">
+            <input type="password"
+            placeholder="确认密码"
+            class="form-control"
+            name="confirmPassword"
+            id="confirmPassword"
+            [(ngModel)]="registerEntity.confirmPassword"
+            #confirmPassword="ngModel"
+            required
+            />
+            <div *ngIf="f.submitted && !checkPassword()" class="help-block">密码输入错误</div>
+            </div>
+            <button  type="submit" id="login-button">
+              注册
+            </button>
+            <div  [ngSwitch]="status" style="margin-top: 17px;margin-left: -10px;">
+              <div *ngSwitchCase="'404'" class="help-block">该用户已注册</div>
+              <div *ngSwitchCase="'400'" class="help-block">请求发生错误</div>
+              <div *ngSwitchCase="'500'" class="help-block">服务器发生错误</div>
+              <div *ngSwitchCase="'403'" class="help-block">权限不足</div>
+              <div *ngSwitchCase="'401'" class="help-block">密码错误</div>
+            </div>
+
+            <div class="registration">
+              <a class="" [routerLink]="['/worker/login']" style="color: white; margin-left: 150px">
+                已是会员？登入
+              </a>
+            </div>
+            <!--<label class="checkbox">-->
+            <!--<span class="pull-right">-->
+            <!--<a> 忘记密码？</a>-->
+            <!--</span>-->
+            <!--</label>-->
+
+          </div>
+
+        </form>
+
+
+      </div>
+
+      <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+  </nb-layout-column>
+</nb-layout>
